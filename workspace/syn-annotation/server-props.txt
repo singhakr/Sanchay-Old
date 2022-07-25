@@ -1,0 +1,4 @@
+Column Names::PCType	PCClass	FilePath	Charset	ColCount
+
+# Paths should be relative to the workspace
+PropertyTable	TaskGroups	workspace/syn-annotation/task-groups.txt	UTF8	10

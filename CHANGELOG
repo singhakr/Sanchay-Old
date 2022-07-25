@@ -1,0 +1,5 @@
+Added a gateway for Python programs. An example Python program is located in the examples directory.
+
+Currently the gateway allows the SSF API to called from Python programs and allows queries to made on annotated corpus, using the the Sanchy Corpus Query Language.
+
+Before running the Pythong program, the PythonGateway script has to run to start the gateway.

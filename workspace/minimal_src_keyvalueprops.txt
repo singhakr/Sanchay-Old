@@ -1,0 +1,6 @@
+SchemaFile	workspace/minimal_wordtypetable.schema
+SchemaCharSet	UTF8
+CorpusFile	data/parallel-corpus/eng-2.txt
+CorpusCharSet	UTF8
+CorpusLang	English
+CorpusAnnotationType	null

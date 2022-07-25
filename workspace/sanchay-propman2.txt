@@ -1,0 +1,5 @@
+Column Names::PCType	PCClass	FilePath	Charset	ColCount
+
+# Paths should be relative to the workspace
+PropertyTable	sanchay-components-pm	workspace/sanchay-components-pm.txt	UTF8	3
+KeyValueProperties	server-props	workspace/server-props.txt	UTF8	2

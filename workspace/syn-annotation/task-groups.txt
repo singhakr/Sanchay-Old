@@ -1,0 +1,4 @@
+Column Count::3
+Column Names::TaskGroup	TaskList	TaskListCharset
+Premchand	workspace/syn-annotation/Premchand/Premchand-list.txt	UTF-8
+#Rafiya-Sanjeev	/home/anil/tmp/syn-annotation-trial/tagged-ciil-ssf-nlpai1.utf8-split/rafiya/Rafiya-Sanjeev-list.txt	UTF-8

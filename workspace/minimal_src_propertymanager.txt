@@ -1,0 +1,5 @@
+Column Names::PCType	PCClass	FilePath	Charset	ColCount
+
+# Paths should be relative to the workspace
+KeyValueProperties	DataProps	workspace/minimal_src_keyvalueprops.txt	UTF8	2
+PropertyTable	Resources	workspace/resources_table.txt	UTF8	5

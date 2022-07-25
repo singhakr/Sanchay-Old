@@ -1,0 +1,4 @@
+Column Count::3
+Column Names::TaskGroup	TaskList	TaskListCharset
+Sample tasks	workspace/parallel-corpus-markup/sample-tasks.txt	UTF-8
+

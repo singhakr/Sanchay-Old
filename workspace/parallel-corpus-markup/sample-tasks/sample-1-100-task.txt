@@ -1,0 +1,16 @@
+Column Names::Property	Value
+TLCorpusUTF8File	workspace/parallel-corpus-markup/sample-tasks/hin-1.txt
+SLCorpusFile	workspace/parallel-corpus-markup/sample-tasks/eng-1.txt
+TaskPropCharset	UTF8
+TaskPropFile	workspace/parallel-corpus-markup/sample-tasks/sample-1-100-task.txt
+MarkerDictFile	workspace/parallel-corpus-markup/sample-tasks/mwe-nc-dict.txt
+SLTMCharset	UTF8
+SLTMFile	workspace/parallel-corpus-markup/sample-tasks/english-mwe-ncs.txt
+TLCorpusFile	workspace/parallel-corpus-markup/sample-tasks/hin-1.txt
+CurrentPosition	1
+SLCorpusCharset	UTF8
+TLTMFile	workspace/parallel-corpus-markup/sample-tasks/hindi-mwe-ncs.txt
+MarkerDictCharset	UTF8
+TaskName	sample-1-100
+TLCorpusCharset	UTF8
+TLTMCharset	UTF8

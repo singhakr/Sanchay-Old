@@ -1,0 +1,27 @@
+NN	n
+NST	nst
+NNP	n
+NEG	avy
+PRP	pn
+PSP	psp
+DEM	pn
+VM	v
+VAUX	v
+JJ	adj
+RB	adv
+RP	avy
+CC	avy
+CL	avy
+WQ	pn
+QF	avy
+QC	num
+QO	num
+INTF	avy
+INJ	avy
+UT	avy
+UNK	unk
+SYM	s
+XC	c
+RDP
+ECH
+

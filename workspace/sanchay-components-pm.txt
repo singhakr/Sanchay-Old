@@ -1,0 +1,16 @@
+Column Names::SanchayComponent	PMPath	PMCharset
+
+SanchayMainServer	workspace/sanchay-propman.txt	UTF8
+ParallelMarkupServer	workspace/tam-marker/propman.txt	UTF8
+SyntacticAnnotationServer	workspace/syn-annotation/propman.txt	UTF8
+PropertiesManagerServer	workspace/propman.txt	UTF8
+TableServer	workspace/table-editor/propman.txt	UTF8
+TreeServer	workspace/tree-editor/propman.txt	UTF8
+LanguageEncodingIdentifierServer	workspace/lang-enc-idetifier/propman.txt	UTF8
+SentenceAlignmentServer	workspace/sentence-alignment/propman.txt	UTF8
+CorpusManagerServer	workspace/corpus-manager/propman.txt	UTF8
+DSFServer	workspace/dsf-editor/propman.txt	UTF8
+UserManagerServer	workspace/user-manager/propman.txt	UTF8
+ResourceManagerServer	workspace/resource-manager/propman.txt	UTF8
+ExpressionFilterTranslatorServer	workspace/expression-translator/propman.txt	UTF8
+SanchayLekhServer	workspace/sanchay-lekh/propman.txt	UTF8

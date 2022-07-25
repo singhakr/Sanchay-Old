@@ -1,0 +1,7 @@
+Task	CorpusCompilation
+SrcCorpusLang	English
+TgtCorpusLang	Hindi
+Dict	False
+DictPath	null
+Morph	False
+

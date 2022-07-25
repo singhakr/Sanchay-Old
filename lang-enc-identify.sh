@@ -1,0 +1,1 @@
+java -Xmx800m  -Djava.ext.dirs=ext-lib:ext-lib/dom4j:ext-lib/derby:ext-lib/xerces -cp .:dist/Sanchay.jar:build/classes -Djava.security.policy=policy sanchay.langenc.LangEncIdentifier LOG_JOINT_PROB props/enc-lang-identify-train.txt data/enc-lang-identifier/testing/Hindi-UTF8 true false true 5 3000 500 1 7 3 false

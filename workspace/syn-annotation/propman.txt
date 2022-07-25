@@ -1,0 +1,7 @@
+Column Names::PCType	PCClass	FilePath	Charset	ColCount
+
+# Paths should be relative to the workspace
+PropertyTokens	phrase-names	workspace/syn-annotation/phrase-names.txt	UTF8	-1
+PropertyTokens	pos-tags	workspace/syn-annotation/pos-tags.txt	UTF8	-1
+KeyValueProperties	directories	workspace/dirs	UTF8	-1
+PropertyTable	tasks	workspace/syn-annotation/tasks.txt	UTF8	3

@@ -1,0 +1,27 @@
+Column Count::3
+Column Names::TaskName	TaskKVPropFile	TaskKVPropCharset
+Trial-1	/home/anil/tmp/trial/task-nandini-sarita-anita-1-utf8-chunk-2.txt	UTF-8
+Trial-2	/home/anil/tmp/trial/task-nandini-sarita-anita-3-utf8-chunked.txt	UTF-8
+Trial-3	/home/anil/tmp/trial/task-nandini-sarita-anita-4-utf8-chunk.txt	UTF-8
+Trial-4	/home/anil/tmp/trial/task-story_10_1.final.mod.utf8-1	UTF-8
+Trial-5	/home/anil/tmp/trial/task-story_10_1.final.mod.utf8-2	UTF-8
+Trial-6	/home/anil/tmp/trial/task-story_10_1.final.mod.utf8-3	UTF-8
+Trial-7	/home/anil/tmp/trial/task-story_10_1.final.mod.utf8-4	UTF-8
+Trial-8	/home/anil/tmp/trial/task-story_10_1.final.mod.utf8-5	UTF-8
+Trial-9	/home/anil/tmp/trial/task-story_22_1.final.mod	UTF-8
+Trial-10	/home/anil/tmp/trial/task-story_36_1.final.mod.utf8-1	UTF-8
+Trial-11	/home/anil/tmp/trial/task-story_36_1.final.mod.utf8-2	UTF-8
+Trial-12	/home/anil/tmp/trial/task-story_36_1.final.mod.utf8-3	UTF-8
+Trial-13	/home/anil/tmp/trial/task-story_36_1.final.mod.utf8-4	UTF-8
+Trial-14	/home/anil/tmp/trial/task-story_37_1.final.mod.utf8-1	UTF-8
+Trial-15	/home/anil/tmp/trial/task-story_37_1.final.mod.utf8-2	UTF-8
+Trial-16	/home/anil/tmp/trial/task-story_37_1.final.mod.utf8-3	UTF-8
+Trial-17	/home/anil/tmp/trial/task-story_38_1.final.mod.utf8-1	UTF-8
+Trial-18	/home/anil/tmp/trial/task-story_38_1.final.mod.utf8-2	UTF-8
+Trial-19	/home/anil/tmp/trial/task-story_38_1.final.mod.utf8-4	UTF-8
+Trial-20	/home/anil/tmp/trial/task-story_39_1.final.mod	UTF-8
+Trial-21	/home/anil/tmp/trial/task-story_41_1.final.mod	UTF-8
+Trial-22	/home/anil/tmp/trial/task-story_42_1.final.mod.utf8-1	UTF-8
+Trial-23	/home/anil/tmp/trial/task-story_42_1.final.mod.utf8-2	UTF-8
+Trial-24	/home/anil/tmp/trial/task-story_42_1.final.mod.utf8-3	UTF-8
+Trial-25	/home/anil/tmp/trial/task-story_45_1.final.mod	UTF-8

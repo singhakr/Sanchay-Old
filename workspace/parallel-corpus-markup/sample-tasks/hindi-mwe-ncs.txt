@@ -1,0 +1,10 @@
+Column Names::PropertyTokens
+MWE_NC
+MWE_NO
+MWE_AS
+SW
+MW
+MWE_GEN
+MWE_AN
+NONE
+MWE_GEN  

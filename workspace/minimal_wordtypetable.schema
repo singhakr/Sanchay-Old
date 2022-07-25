@@ -1,0 +1,4 @@
+Column Names::ColumnName	DataType	DefaultValue
+
+WTString	String	null
+WTFreq	Integer	0

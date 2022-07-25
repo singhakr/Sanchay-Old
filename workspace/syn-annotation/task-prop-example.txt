@@ -1,0 +1,19 @@
+Column Names::Property	Value
+MFeaturesCharset	UTF8
+SSFCorpusCharset	UTF8
+TaskName	Trial-1
+SSFPropFile	props/ssf-props.txt
+SSFPropCharset	UTF8
+POSTagsFile	workspace/syn-annotation/pos-tags.txt
+SSFCorpusStoryFile	/home/anil/tmp/trial/rafiya-story_57_1.final.mod-1
+MFeaturesFile	props/fs-mandatory-attribs.txt
+SSFCorpusStoryUTF8File	
+Language	hin::utf8
+PhraseNamesFile	workspace/syn-annotation/phrase-names.txt
+PhraseNamesCharset	UTF8
+TaskPropFile	/home/anil/tmp/syn-annotation-trial/task-story_14_1.final.mod.utf8
+FSPropFile	props/fs-props.txt
+FSPropCharset	UTF8
+CurrentPosition	1
+TaskPropCharset	UTF8
+POSTagsCharset	UTF8

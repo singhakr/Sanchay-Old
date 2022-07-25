@@ -1,0 +1,4 @@
+Column Names::Property	Value
+DefaultServer	172.16.16.94
+SecurityPolicyFile	/home/anil/public_html/rmi/policy
+ServerLocation	file:///home/anil/public_html/rmi/

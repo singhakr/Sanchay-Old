@@ -1,0 +1,93 @@
+KVPropertiesBegin::Automatic Annotation
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Database Editor
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Dictionary Editor
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Discourse Annotation
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::File Splitter
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Frameset Editor
+Column Names::Property	Value
+CurrentDir	.
+KVPropertiesEnd
+KVPropertiesBegin::Integrated Resource Accessor
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Language Encoding Identifier
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::N-Gram Language Model Compiler
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Parallel Corpus Markup
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Parallel Syntactic Annotation
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Propbank Annotation
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay Charmap
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay Editor
+Column Names::Property	Value
+CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\Socrates\Premchand
+fontSize	12
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay HTML Browser
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay Rich Text Editor
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay SSH Client
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sanchay Shell
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Sentence Alignment Interface
+Column Names::Property	Value
+srcLangEnc	eng::utf8
+tgtLangEnc	hin::utf8
+currentDir	.
+KVPropertiesEnd
+KVPropertiesBegin::Syntactic Annotation
+Column Names::Property	Value
+LangEnc	hin::utf8
+CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\Socrates\Premchand
+CurrentFontSize	14
+CurrentTreeEditTab	Tags
+KVPropertiesEnd
+KVPropertiesBegin::Table Editor
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Tree Creator
+Column Names::Property	Value
+LangEnc	hin::utf8
+KVPropertiesEnd
+KVPropertiesBegin::Word Alignment Interface
+Column Names::Property	Value
+CurrentSrcDir	.
+CurrentTgtDir	.
+GIZADir	.
+SrcLangEnc	eng::utf8
+TgtLangEnc	hin::utf8
+CurrentSrcTagDir	C:\Users\User\projects\Sanchay-0.7.0\Sanchay\workspace\syn-annotation
+CurrentTgtTagDir	C:\Users\User\projects\Sanchay-0.7.0\Sanchay\workspace\syn-annotation
+KVPropertiesEnd
+KVPropertiesBegin::Word List Builder
+Column Names::Property	Value
+KVPropertiesEnd
+KVPropertiesBegin::Word List FST Visualizer
+Column Names::Property	Value
+KVPropertiesEnd

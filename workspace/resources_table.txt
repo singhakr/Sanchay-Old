@@ -1,0 +1,3 @@
+Column Names::Resource	FilePath	Charset	SrcLang	TgtLang
+
+BiDictionary	workspace/	UTF8	English	Hindi

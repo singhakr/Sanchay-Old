@@ -1,0 +1,8 @@
+NP
+PP
+VG
+JJP
+RBP
+PUNC
+BLK
+CCP
