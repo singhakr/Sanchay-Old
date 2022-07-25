@@ -75,7 +75,7 @@ public class SanchaySpringRestClient {
     private RestTemplate restTemplate;
 
     private ObjectMapper plainObjectMapper;
-    private ObjectMapper polymorphicObjectMapper;
+//    private ObjectMapper polymorphicObjectMapper;
 
 //    @Autowired
     private ModelMapper modelMapper;
@@ -90,7 +90,7 @@ public class SanchaySpringRestClient {
 
         modelMapper = SanchaySpringClientUtils.getModelMapperInstance();
         plainObjectMapper = SanchayMapperUtils.getPlainObjectMapperInstance();
-        polymorphicObjectMapper = SanchayMapperUtils.getPolymorphicObjectMapperInstance();
+//        polymorphicObjectMapper = SanchayMapperUtils.getPolymorphicObjectMapperInstance();
 
         SANCHAY_CONFIG_PATH = System.getProperty("user.dir") + "/" + SANCHAY_CONFIG_FILENAME;
         SANCHAY_CONFIG_PROPERTIES = SanchaySpringClientUtils.loadPropertiesFile(SANCHAY_CONFIG_PATH);
@@ -238,7 +238,7 @@ public class SanchaySpringRestClient {
         ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
                 String.class);
 
-        String annotationManagementInfoString = polymorphicObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
+        String annotationManagementInfoString = plainObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
         System.out.println("Annotation management info received: " + annotationManagementInfoString);
 
         //
@@ -247,12 +247,12 @@ public class SanchaySpringRestClient {
 //
 //        ObjectMapper mapper = new ObjectMapper();
 //
-        SanchayAnnotationManagementUpdateInfo annotationManagementUpdateInfo = polymorphicObjectMapper.readValue(response.getBody(), SanchayAnnotationManagementUpdateInfo.class);
+        SanchayAnnotationManagementUpdateInfo annotationManagementUpdateInfo = plainObjectMapper.readValue(response.getBody(), SanchayAnnotationManagementUpdateInfo.class);
 
         System.out.println("Response: " + response);
         System.out.println("Response body: " + response.getBody());
 //        ObjectMapper mapper = new ObjectMapper();
-        annotationManagementInfoString = polymorphicObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
+        annotationManagementInfoString = plainObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
 //        String annotationManagementInfoString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
         System.out.println("Annotation management info after deserialzation and reserialization: " + annotationManagementInfoString);
 
@@ -263,7 +263,7 @@ public class SanchaySpringRestClient {
         String authenticationURL = AUTH_BASE_URL + SanchaySpringServerEndPoints.SAVE_ANNOTATION_MANAGEMENT_INFO;
 
 //        ObjectMapper mapper = new ObjectMapper();
-        String requestBody = polymorphicObjectMapper.writeValueAsString(annotationManagementUpdateInfo);
+        String requestBody = plainObjectMapper.writeValueAsString(annotationManagementUpdateInfo);
 //        String requestBody = mapper.writeValueAsString(annotationManagementUpdateInfo);
 
         HttpHeaders headers = new HttpHeaders();
@@ -276,15 +276,15 @@ public class SanchaySpringRestClient {
 
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
 
-//        ResponseEntity<SanchayAnnotationManagementUpdateInfo> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
-//                new ParameterizedTypeReference<SanchayAnnotationManagementUpdateInfo>() {
-//                });
+        ResponseEntity<SanchayAnnotationManagementUpdateInfo> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+                new ParameterizedTypeReference<SanchayAnnotationManagementUpdateInfo>() {
+                });
 //
-//        annotationManagementUpdateInfo = response.getBody();
-        ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
-                String.class);
+        annotationManagementUpdateInfo = response.getBody();
+//        ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+//                String.class);
 
-        String annotationManagementInfoString = polymorphicObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
+        String annotationManagementInfoString = plainObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response.getBody());
         System.out.println("Annotation management info received: " + annotationManagementInfoString);
 
 //        ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
@@ -300,7 +300,7 @@ public class SanchaySpringRestClient {
         System.out.println("Response: " + response);
         System.out.println("Response body: " + response.getBody());
 //        String annotationManagementInfoString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
-        annotationManagementInfoString = polymorphicObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
+        annotationManagementInfoString = plainObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
 //        String annotationManagementInfoString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(annotationManagementUpdateInfo);
         System.out.println("Annotation management info after deserialzation and reserialization: " + annotationManagementInfoString);
 
@@ -633,25 +633,25 @@ public class SanchaySpringRestClient {
 
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
-//        ResponseEntity<SanchayUserDTO> response = restTemplate.exchange(authenticationURL, HttpMethod.GET, entity,
-//                new ParameterizedTypeReference<SanchayUserDTO>() {
-//                });
-        ResponseEntity<SanchayUserDTO> response = restTemplate.exchange(authenticationURL, HttpMethod.GET, entity,
-                SanchayUserDTO.class);
+        ResponseEntity<SanchayUserDTO> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+                new ParameterizedTypeReference<SanchayUserDTO>() {
+                });
+//        ResponseEntity<SanchayUserDTO> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+//                SanchayUserDTO.class);
 
         SanchayUserDTO currentUser = response.getBody();
 
-//        ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.GET, entity,
+//        ResponseEntity<String> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
 //                String.class);
 //
-////        SanchayUser currentUser = response.getBody();
+//        SanchayUser currentUser = response.getBody();
 //
-//        TypeReference<SanchayUser> typeRef
-//                = new TypeReference<SanchayUser>() {};
+//        TypeReference<SanchayUserDTO> typeRef
+//                = new TypeReference<SanchayUserDTO>() {};
 //
 //        ObjectMapper mapper = new ObjectMapper();
 //
-//        SanchayUser currentUser = mapper.readValue(response.getBody(), typeRef);
+//        SanchayUserDTO currentUser = plainObjectMapper.readValue(response.getBody(), typeRef);
 
         System.out.println("Response: " + response);
         System.out.println("Response body: " + response.getBody());
