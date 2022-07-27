@@ -24,15 +24,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.EventObject;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import sanchay.GlobalProperties;
 import sanchay.SanchayMain;
 import sanchay.common.types.ClientType;
@@ -1452,6 +1450,9 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 
                 annotationManagementUpdateInfo.getAllOrganisations().put(organisationDTO.getName(), organisationDTO);
                 annotationManagementUpdateInfo.getAllSlimOrganisations().put(organisationDTO.getName(), organisationSlimDTO);
+                
+                fillOrganisationsInfo();
+                fillUserOrganisationInfo(currentUser);
             }
         }
     }//GEN-LAST:event_createOrganisationJButtonActionPerformed
@@ -1477,6 +1478,9 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 //            annotationManagementUpdateInfo.getAllOrganisations().remove(shortName);
 //            annotationManagementUpdateInfo.getAllSlimOrganisations().remove(shortName);
 //            annotationManagementUpdateInfo.getAllOrganisations().remove(shortName, selectedOrganisation);
+                
+            fillOrganisationsInfo();
+            fillUserOrganisationInfo(currentUser);
         }
     }//GEN-LAST:event_deleteOrganisationJButtonActionPerformed
 
@@ -1503,6 +1507,9 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 
                 annotationManagementUpdateInfo.getAllLanguages().put(languageDTO.getName(), languageDTO);
                 annotationManagementUpdateInfo.getAllSlimLanguages().put(languageDTO.getName(), languageSlimDTO);
+                
+                fillLanguagesInfo();
+                fillUserLangaugesInfo(currentUser);
             }
         }
     }//GEN-LAST:event_createLanguageJButtonActionPerformed
@@ -1525,6 +1532,9 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 
 //            annotationManagementUpdateInfo.getAllLanguages().remove(name);
 //            annotationManagementUpdateInfo.getAllSlimLanguages().remove(name);
+                
+            fillLanguagesInfo();
+            fillUserLangaugesInfo(currentUser);
         }
     }//GEN-LAST:event_deleteLanguageJButtonActionPerformed
     
@@ -1551,6 +1561,8 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 
 //                annotationManagementUpdateInfo.getAllUsers().remove(username);
 //                annotationManagementUpdateInfo.getAllSlimUsers().remove(username);
+                                
+                fillUsersInfo();
             }
         }
     }//GEN-LAST:event_deleteUserJButtonActionPerformed
@@ -1833,7 +1845,16 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
     private void saveAnnotationManagementInfoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAnnotationManagementInfoJButtonActionPerformed
         try {
             // TODO add your handling code here:
-            sanchaySpringRestClient.saveAnnotationManagementUpdateInfo(annotationManagementUpdateInfo);
+            String errorMessage = validateAnnotationManagementUpdateInfo(annotationManagementUpdateInfo);
+            
+            if(errorMessage == null)
+            {
+                sanchaySpringRestClient.saveAnnotationManagementUpdateInfo(annotationManagementUpdateInfo);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, errorMessage, GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);            
+            }
         } catch (JsonProcessingException ex) {
             Logger.getLogger(SanchayRemoteWorkJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1905,6 +1926,8 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
                 cbModel = (DefaultComboBoxModel<String>) selectLevelUserJComboBox.getModel();
 
                 cbModel.addElement(value);
+                                
+                fillUsersInfo();
             }
         }
         
@@ -2631,6 +2654,120 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
     
     public void setTitle(String t) {
     }
+    
+    private String validateAnnotationManagementUpdateInfo(SanchayAnnotationManagementUpdateInfo annotationManagementUpdateInfo)
+    {
+        String errorMessage = null;
+
+        Map<String, SanchayUserDTO> allUsers = new LinkedHashMap<>(annotationManagementUpdateInfo.getAllUsers());
+
+        // Check first name
+        Optional<Map.Entry<String, SanchayUserDTO>> invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                    (entry.getValue().getFirstName() == null || entry.getValue().getFirstName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please enter the first name for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check last name
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                        (entry.getValue().getLastName() == null || entry.getValue().getLastName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please enter the last name for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check email address
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                {
+                    EmailValidator emailValidator = EmailValidator.getInstance();
+                    String email = entry.getValue().getEmailAddress();
+                    return (email == null || email.equals("") || !emailValidator.isValid(email));
+                }
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please enter a valid email address for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check password
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                        (entry.getValue().getPassword() == null || entry.getValue().getPassword().equals("")
+                                || entry.getValue().getPassword().length() < 8)
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please enter a password of at least\n8 characters for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check at least one role assigned and the current role is set
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                    entry.getValue().getRoles().size() > 0
+                            && (entry.getValue().getCurrentRoleName() != null && !entry.getValue().getCurrentRoleName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please add at least one role and set\nthe current role for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check at least one organisation assigned and the current organistion is set
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                        entry.getValue().getOrganisations().size() > 0
+                                && (entry.getValue().getCurrentOrganisationName() != null && !entry.getValue().getCurrentOrganisationName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please add at least one organisation and set\nthe current organisation for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check at least one language assigned and the current language is set
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                        entry.getValue().getLanguages().size() > 0
+                                && (entry.getValue().getCurrentLanguageName() != null && !entry.getValue().getCurrentLanguageName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please add at least one language and set\nthe current language for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        // Check at least one level assigned and the current level is set
+        invalidDTOEntry = allUsers.entrySet().stream().filter(
+                (entry) ->
+                        entry.getValue().getAnnotationLevels().size() > 0
+                                && (entry.getValue().getCurrentAnnotationLevelName() != null && !entry.getValue().getCurrentAnnotationLevelName().equals(""))
+        ).findFirst();
+
+        if(invalidDTOEntry.isPresent()) {
+            errorMessage = String.format("Please add at least one annotation level and set\nthe current level for user %s.", invalidDTOEntry.get().getValue().getUsername());
+
+            return errorMessage;
+        }
+
+        return errorMessage;
+    }
 
     protected void createFileTree()
     {
@@ -2946,7 +3083,15 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
 
             sanchaySpringRestClient.listDirectories("", rootRemoteFileNode);
             RemoteFileNode annotationDirNode = RMIUtils.getAnnotationDirNodeRMI(rootRemoteFileNode);
-            sanchaySpringRestClient.cloneDirectory(annotationDirNode, false);
+
+            if(annotationDirNode == null) {
+                sanchaySpringRestClient.cloneDirectory(annotationDirNode, false);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "There are no files added for annotation/validation\n."
+                        + "Please ask the annotation manager to upload file.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+            }
         }
         catch(Exception e)
         {
