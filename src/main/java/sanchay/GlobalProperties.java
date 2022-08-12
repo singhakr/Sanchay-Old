@@ -188,6 +188,11 @@ public class GlobalProperties implements Serializable {
 
         File p = new File(USER_HOME, ".sanchay");
 
+        if(!p.exists())
+        {
+            p.mkdir();
+        }
+
         if(!p.isDirectory())
         {
             if(p.isFile())

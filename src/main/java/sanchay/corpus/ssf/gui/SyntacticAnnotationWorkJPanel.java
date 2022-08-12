@@ -157,7 +157,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
 
     protected SyntacticAnnotationValidationJPanel validationJPanel;
 
-    private SanchayRemoteWorkJPanel sshClientJPanel = null;    
+    private SanchayRemoteWorkJPanel sanchayRemoteWorkJPanel = null;
     protected File rootLocalFile = null;
     protected RemoteFileNode rootRemoteFileNode = null;
     
@@ -192,6 +192,8 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
         super();
 
         initComponents();
+        
+        uploadJButton.setVisible(false);
 
         loadState(this);
         
@@ -1044,8 +1046,15 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
     }//GEN-LAST:event_commentJComboBoxActionPerformed
     
     private void saveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveJButtonActionPerformed
-// TODO add your handling code here:
-        save(evt);
+// TODO add your handling code here:        
+        if(workRemote && connected)
+        {
+            uploadJButtonActionPerformed(null);
+        }
+        else
+        {
+            save(evt);            
+        }
     }//GEN-LAST:event_saveJButtonActionPerformed
     
     private void resetAllJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetAllJButtonActionPerformed
@@ -1572,7 +1581,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
 
         String localPath = kvTaskProps.getPropertyValue("SSFCorpusStoryFile");
         
-        sshClientJPanel.uploadFile(localPath, evt);
+        sanchayRemoteWorkJPanel.uploadFile(localPath, evt);
     }//GEN-LAST:event_uploadJButtonActionPerformed
 
     private void showValidationResults(SanchayTableModel matches,String langEnc, int tcount) {
@@ -2121,14 +2130,14 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
     }
     public void openRemoteFileMode()
     {
-        if(sshClientJPanel == null) {
-            sshClientJPanel = SanchayMain.getSSHClientJPanel();
+        if(sanchayRemoteWorkJPanel == null) {
+            sanchayRemoteWorkJPanel = SanchayMain.getSSHClientJPanel();
         }
 
-        sshClientJPanel.setWorkJPanel(this);
+        sanchayRemoteWorkJPanel.setWorkJPanel(this);
 
-        sshClientJPanel.setOwner(owner);
-        SanchayJDialog openDialog = new SanchayJDialog(owner, sanchay.GlobalProperties.getIntlString("Sanchay_SSH_Client"), true, (JPanelDialog) sshClientJPanel);
+        sanchayRemoteWorkJPanel.setOwner(owner);
+        SanchayJDialog openDialog = new SanchayJDialog(owner, sanchay.GlobalProperties.getIntlString("Sanchay_SSH_Client"), true, (JPanelDialog) sanchayRemoteWorkJPanel);
 //            openDialog.pack();
         SanchayGUIUtils.maximizeDialog(openDialog);
 
@@ -2250,6 +2259,11 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
         displayCurrentPosition();
 
         owner.setCursor(cursor);
+    }
+
+    public void setConnected(boolean connected)
+    {
+        this.connected = connected;
     }
     
     private void switchDNDView() {
@@ -3209,7 +3223,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
                 int senCount = senNodes.size();
 
                 for (int j = 0; j < senCount; j++) {
-                    senNums.add(new Integer(i));
+                    senNums.add(Integer.valueOf(i));
                 }
 
                 matchedNodes.addAll(senNodes);
@@ -5501,7 +5515,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
                     String colName = model.getColumnName(i);
 
                     if(colName.equals(sanchay.GlobalProperties.getIntlString("Create_Attribute")))
-                        model.setValueAt(new Boolean(false), row, i);
+                        model.setValueAt(Boolean.FALSE, row, i);
                     else if(colName.equals(sanchay.GlobalProperties.getIntlString("Tag")))
                         model.setValueAt(tag, row, i);
                     else if(colName.equals(sanchay.GlobalProperties.getIntlString("Text")))

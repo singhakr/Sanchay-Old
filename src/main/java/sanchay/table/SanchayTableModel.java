@@ -346,13 +346,13 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
                     cellValue = results.getString (getColumnName(colIndex)); 
 //                    cellValue = results.getString (columnNames[colIndex]); 
                 else if (columnClasses[colIndex] == Integer.class) 
-                    cellValue = new Integer (results.getInt (getColumnName(colIndex))); 
+                    cellValue = Integer.valueOf(results.getInt(getColumnName(colIndex)));
 //                    cellValue = new Integer (results.getInt (columnNames[colIndex])); 
                 else if (columnClasses[colIndex] == Float.class) 
-                    cellValue = new Float (results.getInt (getColumnName(colIndex))); 
+                    cellValue = Float.valueOf((results.getInt(getColumnName(colIndex))));
 //                    cellValue = new Float (results.getInt (columnNames[colIndex])); 
                 else if (columnClasses[colIndex] == Double.class) 
-                    cellValue = new Double (results.getDouble (getColumnName(colIndex)));
+                    cellValue = Double.valueOf(results.getDouble(getColumnName(colIndex)));
 //                    cellValue = new Double (results.getDouble (columnNames[colIndex]));
                 else if (columnClasses[colIndex] == java.sql.Date.class) 
                     cellValue = results.getDate (getColumnName(colIndex)); 
@@ -679,27 +679,26 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
             try {
 //                object = cls.newInstance();
                 if(cls.getCanonicalName().equals(Boolean.class.getCanonicalName()))
-                    object = new Boolean(false);
+                    object = Boolean.FALSE;
                 else if(cls.getCanonicalName().equals(Byte.class.getCanonicalName()))
-                    object = new Byte("0");
+                    object = Byte.valueOf("0");
                 else if(cls.getCanonicalName().equals(Short.class.getCanonicalName()))
-                    object = new Short("0");
+                    object = Short.valueOf("0");
                 else if(cls.getCanonicalName().equals(Integer.class.getCanonicalName()))
-                    object = new Integer(0);
+                    object = Integer.valueOf(0);
                 else if(cls.getCanonicalName().equals(Long.class.getCanonicalName()))
-                    object = new Long(0L);
+                    object = Long.valueOf(0L);
                 else if(cls.getCanonicalName().equals(Float.class.getCanonicalName()))
-                    object = new Float(0.0);
+                    object = Float.valueOf(0.0F);
                 else if(cls.getCanonicalName().equals(Double.class.getCanonicalName()))
-                    object = new Double(0.0);
+                    object = Double.valueOf(0.0);
                 else
-                    object = cls.getConstructor().newInstance();
+//                    object = cls.getConstructor().newInstance();
+                    object = Class.forName(object.getClass().getName()).newInstance();
             } catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException  ex) {
                 Logger.getLogger(SanchayTableModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchMethodException ex) {
-                Logger.getLogger(SanchayTableModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvocationTargetException ex) {
-                Logger.getLogger(SanchayTableModel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
 
             rowData.add(object);
@@ -795,7 +794,7 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
         for(int i = 0; i < getRowCount(); i++)
         {
             if(getValueAt(i, colIndex).equals(val))
-                ret.add(new Integer(i));
+                ret.add(Integer.valueOf(i));
         }
 
         return ret;
@@ -862,7 +861,7 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
             }
             
             if(match)
-                ret.add(new Integer(i));
+                ret.add(Integer.valueOf((i)));
         }
         
         return ret;
@@ -1524,12 +1523,11 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
 
             setValueAt(columnSpec.columnName, i, 0);
             setValueAt(columnSpec.dataType, i, 1);
-            setValueAt(new Boolean(columnSpec.isPrimaryKey), i, 2);
-            setValueAt(new Boolean(columnSpec.isNotNULL), i, 3);
-            setValueAt(new Boolean(columnSpec.isUnique), i, 4);
-            setValueAt(new Boolean(columnSpec.defaultValue), i, 5);
-            setValueAt(new Boolean(true), i, 6);
-            
+            setValueAt(Boolean.valueOf(columnSpec.isPrimaryKey), i, 2);
+            setValueAt(Boolean.valueOf(columnSpec.isNotNULL), i, 3);
+            setValueAt(Boolean.valueOf(columnSpec.isUnique), i, 4);
+            setValueAt(Boolean.valueOf(columnSpec.defaultValue), i, 5);
+            setValueAt(Boolean.valueOf(true), i, 6);
             i++;
         }
         

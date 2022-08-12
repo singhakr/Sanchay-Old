@@ -1130,10 +1130,10 @@ private void proxyJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GE
         
         // Ad-hoc code for Parallel Syntactic Annotation interface
         // Move it to SanchayClient and respective implementations
-        if(ctype.equals(ClientType.PARALLEL_CORPUS_MARKUP))
-        {
-            ((ParallelSyntacticAnnotationWorkJPanel) clientJPanel).configure();
-        }
+//        if(ctype.equals(ClientType.PARALLEL_CORPUS_MARKUP))
+//        {
+//            ((ParallelSyntacticAnnotationWorkJPanel) clientJPanel).configure();
+//        }
 
         return ((SanchayClient) clientJPanel);
     }

@@ -36,6 +36,7 @@ import sanchay.text.editor.gui.TextEditorJPanel;
 import sanchay.text.spell.gui.DictionaryFSTJPanel;
 import sanchay.tree.SanchayMutableTreeNode;
 import sanchay.tree.gui.SanchayTreeDrawingJPanel;
+import sanchay.util.gui.DocumentConverterJPanel;
 import sanchay.util.gui.FileSplitterJPanel;
 import sanchay.word.gui.WordListJPanel;
 /**
@@ -195,7 +196,7 @@ public final class ClientType extends SanchayType implements Serializable {
             return new SanchayRemoteWorkJPanel();
         else if(cl.equals(ClientType.FILE_SPLITTER))
             return new FileSplitterJPanel();
-        if(cl.equals(ClientType.SANCHAY_CHARMAP))
+        else if(cl.equals(ClientType.SANCHAY_CHARMAP))
             return new SanchayCharmapJPanel();
         else if(cl.equals(ClientType.INTEGRATED_RESOURCE_ACCESSOR))
             return new IntegratedResourceAccessorJPanel(true, true);
@@ -212,13 +213,13 @@ public final class ClientType extends SanchayType implements Serializable {
 //            return new FilterTranslatorJPanel();
 //        else if(cl.equals(ClientType.MNREAD))
 //            return new MNReadJPanel();
-        else if(cl.equals(ClientType.PARALLEL_CORPUS_MARKUP))
-        {
-            ParallelSyntacticAnnotationWorkJPanel parallelSyntacticAnnotationWorkJPanel = 
-                    new ParallelSyntacticAnnotationWorkJPanel();
-            
-            return parallelSyntacticAnnotationWorkJPanel;
-        }
+//        else if(cl.equals(ClientType.PARALLEL_CORPUS_MARKUP))
+//        {
+//            ParallelSyntacticAnnotationWorkJPanel parallelSyntacticAnnotationWorkJPanel =
+//                    new ParallelSyntacticAnnotationWorkJPanel();
+//
+//            return parallelSyntacticAnnotationWorkJPanel;
+//        }
         else if(cl.equals(ClientType.NGRAM_LM))
             return new NGramLMJPanel();
         else if(cl.equals(ClientType.SENTENCE_ALIGNMENT_INTERFACE))
@@ -231,6 +232,8 @@ public final class ClientType extends SanchayType implements Serializable {
             return new ParallelMarkupWorkJPanel();
         else if(cl.equals(ClientType.DISCOURSE_ANNOTATION))
             return new DiscourseAnnotationJPanel("hin::utf8");
+        else if(cl.equals(ClientType.DOCUMENT_CONVERTER))
+            return new DocumentConverterJPanel();
 //        else if(cl.equals(ClientType.PARALLEL_MARKUP_ANALYZER))
 //            return new ParallelMarkupAnalyzerJPanel();
 //        else if(cl.equals(ClientType.PROPERTIES_MANAGER))
@@ -408,7 +411,7 @@ public final class ClientType extends SanchayType implements Serializable {
     public static final ClientType PROPBANK_ANNOTATION = new ClientType("Propbank Annotation", "PB", "PropbankAnnotationWorkJPanel", ServerType.RESOURCE_MANAGER, "sanchay.corpus.ssf.gui");
     public static final ClientType FRAMESET_EDITOR = new ClientType(GlobalProperties.getIntlString("Frameset_Editor"), "FE", "FramesetJPanel", ServerType.RESOURCE_MANAGER, "sanchay.propbank.gui");
 //    public static final ClientType SSF_CORPUS_ANALYZER = new ClientType("SSF Corpus Analyzer", "", "SSFCorpusAnalyzerJPanel", ServerType.SANCHAY_SERVER, "sanchay.corpus.ssf.gui");
-    public static final ClientType PARALLEL_CORPUS_MARKUP = new ClientType("Parallel Syntactic Annotation", "PS", "ParallelSyntacticAnnotationWorkJPanel",ServerType.SANCHAY_SERVER, "sanchay.corpus.parallel.gui");
+//    public static final ClientType PARALLEL_CORPUS_MARKUP = new ClientType("Parallel Syntactic Annotation", "PS", "ParallelSyntacticAnnotationWorkJPanel",ServerType.SANCHAY_SERVER, "sanchay.corpus.parallel.gui");
 //    public static final ClientType SANCHAY = new ClientType("SanchayMain", "", ServerType.SANCHAY, "sanchay.clients");
 //    public static final ClientType USER_MANAGER = new ClientType("User Manager", "", "UserManager", ServerType.USER_MANAGER, "sanchay.clients");
 
@@ -432,6 +435,7 @@ public final class ClientType extends SanchayType implements Serializable {
 //    public static final ClientType TREE_EDITOR = new ClientType("Tree Editor", "", "SanchayTreeJPanel", ServerType.SANCHAY_SERVER, "sanchay.tree.gui");
 //    public static final ClientType XML_EDITOR = new ClientType("XML Editor", "", "SanchayW3CXMLJPanel", ServerType.SANCHAY_SERVER, "sanchay.xml.gui");
     public static final ClientType DATABASe_EDITOR = new ClientType("Database Editor", "DBE", "SanchayDatabaseEditorJPanel", ServerType.RESOURCE_MANAGER, "sanchay.db.gui");
+    public static final ClientType DOCUMENT_CONVERTER = new ClientType("Document Converter", "DCT", "DocumentConverterJPanel", ServerType.RESOURCE_MANAGER, "sanchay.util.gui");
     
     
 //    public static final ClientType PARALLEL_CORPUS_MARKUP = new ClientType("ParallelCorpusMarkup", ServerType.PARALLEL_CORPUS_MARKUP, "sanchay.corpus.parallel.gui");

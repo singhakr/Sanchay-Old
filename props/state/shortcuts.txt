@@ -1,4 +1,30 @@
 TableBegin::Frameset Editing Interface
 Column Count::3
 Column Names::A	B	C
+ARG0	Set the argument toARG0	typed 0
+ARG1	Set the argument toARG1	typed 1
+ARG2	Set the argument toARG2	typed 2
+ARG3	Set the argument toARG3	typed 3
+ARG4	Set the argument toARG4	typed 4
+ARG5	Set the argument toARG5	typed 5
+ARGA	Set the argument toARGA	typed A
+ARGM-ADV	Set the argument toARGM-ADV	typed V
+ARGM-CAU	Set the argument toARGM-CAU	typed U
+ARGM-DIR	Set the argument toARGM-DIR	typed R
+ARGM-DIS	Set the argument toARGM-DIS	typed S
+ARGM-DSP	Set the argument toARGM-DSP	typed P
+ARGM-EXT	Set the argument toARGM-EXT	typed T
+ARGM-LOC	Set the argument toARGM-LOC	typed C
+ARGM-MNR	Set the argument toARGM-MNR	typed R
+ARGM-MOD	Set the argument toARGM-MOD	typed D
+ARGM-NEG	Set the argument toARGM-NEG	typed G
+ARGM-SLC	Set the argument toARGM-SLC	typed C
+ARGM-PRD	Set the argument toARGM-PRD	typed D
+ARGM-PRP	Set the argument toARGM-PRP	typed P
+ARGM-RCL	Set the argument toARGM-RCL	typed L
+ARGM-REC	Set the argument toARGM-REC	typed C
+ARGM-TMP	Set the argument toARGM-TMP	typed P
+ARG-UNDEF	Set the argument toARG-UNDEF	typed F
+ARG-ERASE	Set the argument toARG-ERASE	typed E
+Other	Set the argument toOther	typed r
 TableEnd

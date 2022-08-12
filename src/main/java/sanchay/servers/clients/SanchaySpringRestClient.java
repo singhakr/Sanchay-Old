@@ -689,6 +689,60 @@ public class SanchaySpringRestClient {
         return currentUser;
     }
 
+    public Boolean doesUserExist(String username) {
+        String authenticationURL = AUTH_BASE_URL + SanchaySpringServerEndPoints.DOES_USER_EXIST;
+        String requestBody = "username=" + username;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+
+        String authHeader = "Bearer " + access_token;
+
+        headers.set("Authorization", authHeader);
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<Boolean> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+                new ParameterizedTypeReference<Boolean>() {
+                });
+
+        Boolean userExists = response.getBody();
+
+        System.out.println("Response: " + response);
+        System.out.println("Response body: " + response.getBody());
+        System.out.println("Does user exist: " + userExists);
+
+        return userExists;
+    }
+
+    public Boolean doesEmailExist(String email) {
+        String authenticationURL = AUTH_BASE_URL + SanchaySpringServerEndPoints.DOES_EMAIL_EXIST;
+        String requestBody = "email=" + email;
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+
+        String authHeader = "Bearer " + access_token;
+
+        headers.set("Authorization", authHeader);
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        ResponseEntity<Boolean> response = restTemplate.exchange(authenticationURL, HttpMethod.POST, entity,
+                new ParameterizedTypeReference<Boolean>() {
+                });
+
+        Boolean emailExists = response.getBody();
+
+        System.out.println("Response: " + response);
+        System.out.println("Response body: " + response.getBody());
+        System.out.println("Does user exist: " + emailExists);
+
+        return emailExists;
+    }
+
     public Map<String, SanchayRoleDTO> getUserRoles(String username) throws JsonProcessingException {
         String authenticationURL = AUTH_BASE_URL + SanchaySpringServerEndPoints.GET_USER_ROLES;
         String requestBody = username;
@@ -1150,7 +1204,8 @@ public class SanchaySpringRestClient {
     }
     public boolean uploadFile(String username, RemoteFile remoteFile, boolean overwrite) throws Exception {
 //    public boolean downlaodFile(String username, RemoteFile remoteFile) {
-        String fileURL = "http://localhost:8080/fileServer/uploadFile";
+        String fileURL = FILE_BASE_URL + SanchaySpringServerEndPoints.UPLOAD_FILE;
+//        String fileURL = "http://localhost:8080/fileServer/upload";
 
         String textContents = SanchaySpringClientUtils.readFileAsString(remoteFile.getAbsolutePathOnClient());
 
@@ -1343,10 +1398,10 @@ public class SanchaySpringRestClient {
         sanchaySpringRestClient.authenticateUser("socrates", "1234");
         sanchaySpringRestClient.getCurrentUser();
 
-        sanchaySpringRestClient.getUserRoles("Socrates");
-        sanchaySpringRestClient.getUserOrganisations("Socrates");
-        sanchaySpringRestClient.getUserLanguages("Socrates");
-        sanchaySpringRestClient.getUserAnnotationLevels("Socrates");
+//        sanchaySpringRestClient.getUserRoles("Socrates");
+//        sanchaySpringRestClient.getUserOrganisations("Socrates");
+//        sanchaySpringRestClient.getUserLanguages("Socrates");
+//        sanchaySpringRestClient.getUserAnnotationLevels("Socrates");
 
 //        long start = System.currentTimeMillis();
 //        Thread.sleep(1 * 60 * 1000);
@@ -1364,8 +1419,8 @@ public class SanchaySpringRestClient {
 //            sanchaySpringRestClient.getUser("democritus");
 //        }
 //        sanchaySpringRestClient.getRoles("socrates");
-        Map<String, SanchayOrganisationDTO> sanchayOrganisationMap = sanchaySpringRestClient.getAllOrganisations();
-        SanchayAnnotationManagementUpdateInfo annotationManagementUpdateInfo = sanchaySpringRestClient.getAnnotationManagementUpdateInfo();
+//        Map<String, SanchayOrganisationDTO> sanchayOrganisationMap = sanchaySpringRestClient.getAllOrganisations();
+//        SanchayAnnotationManagementUpdateInfo annotationManagementUpdateInfo = sanchaySpringRestClient.getAnnotationManagementUpdateInfo();
 //        sanchaySpringRestClient.getAnnotationDirectory();
 //        RemoteFile remoteFile = new RemoteFile("name", ".", ".", ".", true);
 //        sanchaySpringRestClient.listFilesOnServer("plato", remoteFile);

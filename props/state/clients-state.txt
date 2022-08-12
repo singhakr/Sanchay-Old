@@ -10,6 +10,9 @@ KVPropertiesEnd
 KVPropertiesBegin::Discourse Annotation
 Column Names::Property	Value
 KVPropertiesEnd
+KVPropertiesBegin::Document Converter
+Column Names::Property	Value
+KVPropertiesEnd
 KVPropertiesBegin::File Splitter
 Column Names::Property	Value
 KVPropertiesEnd
@@ -40,8 +43,8 @@ Column Names::Property	Value
 KVPropertiesEnd
 KVPropertiesBegin::Sanchay Editor
 Column Names::Property	Value
-CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\Socrates\Premchand
-fontSize	12
+CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\admin\Premchand
+fontSize	14
 KVPropertiesEnd
 KVPropertiesBegin::Sanchay HTML Browser
 Column Names::Property	Value
@@ -64,7 +67,7 @@ KVPropertiesEnd
 KVPropertiesBegin::Syntactic Annotation
 Column Names::Property	Value
 LangEnc	hin::utf8
-CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\Socrates\Premchand
+CurrentDir	C:\Users\User\projects\Sanchay-POM-Project\Sanchay\annotation\IIIT-H\Hindi\POS Tagged\admin\Premchand
 CurrentFontSize	14
 CurrentTreeEditTab	Tags
 KVPropertiesEnd

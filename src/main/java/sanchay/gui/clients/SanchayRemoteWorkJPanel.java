@@ -9,11 +9,8 @@ import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Toolkit;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -306,6 +303,7 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         lastNameLabel = new javax.swing.JLabel();
         lastNameJTextField = new javax.swing.JTextField();
         userAddButtonsJPanel = new javax.swing.JPanel();
+        changePasswordJCheckBox = new javax.swing.JCheckBox();
         createUserJButton = new javax.swing.JButton();
         updateUserJButton = new javax.swing.JButton();
         userDetailsJPanel = new javax.swing.JPanel();
@@ -677,6 +675,14 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         addUserJPanel.add(lastNameJPanel);
 
         userAddButtonsJPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        changePasswordJCheckBox.setText("Change Password");
+        changePasswordJCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordJCheckBoxActionPerformed(evt);
+            }
+        });
+        userAddButtonsJPanel.add(changePasswordJCheckBox);
 
         createUserJButton.setText("Add");
         createUserJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1129,6 +1135,11 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         bottomJPanel.add(saveAnnotationManagementInfoJButton);
 
         cancelJButton.setText("Cancel");
+        cancelJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelJButtonActionPerformed(evt);
+            }
+        });
         bottomJPanel.add(cancelJButton);
 
         add(bottomJPanel, java.awt.BorderLayout.SOUTH);
@@ -1871,6 +1882,23 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         if(username != null && password != null && email != null && firstName != null && lastName != null
             && !username.equals("") && !password.equals("") && !email.equals("") && !firstName.equals("")  && !lastName.equals(""))
         {
+            Boolean exists = sanchaySpringRestClient.doesUserExist(username);
+            
+            if(exists)
+            {
+                JOptionPane.showMessageDialog(this, "Username already exists.\nPlease chose a different username.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+
+                return;
+            }
+            
+            exists = sanchaySpringRestClient.doesEmailExist(username);
+            
+            if(exists)
+            {
+                JOptionPane.showMessageDialog(this, "Email address already exists.\nPlease chose a different email address.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+
+                return;
+            }
             SanchayUserDTO userDTO = SanchayUserDTO.builder().username(username)
                     .password(password)
                     .emailAddress(email)
@@ -1976,14 +2004,26 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         String firstName = firstNameJTextField.getText();
         String lastName = lastNameJTextField.getText();
 
-        if(username != null && password != null && email != null && firstName != null && lastName != null
-                && !username.equals("") && !password.equals("") && !email.equals("") && !firstName.equals("")  && !lastName.equals(""))
+        if(username != null && email != null && firstName != null && lastName != null
+                && !username.equals("") && !email.equals("") && !firstName.equals("")  && !lastName.equals(""))
         {
             SanchayUserDTO userDTO = annotationManagementUpdateInfo.getAllUsers().get(username);
             SanchayUserSlimDTO userSlimDTO = annotationManagementUpdateInfo.getAllSlimUsers().get(username);
             
             userDTO.setUsername(username);
-            userDTO.setPassword(password);
+
+            if(userDTO.isChangePassword())
+            {
+                if(password == null ||  password.equals("") || password.length() < 8)
+                {
+                    JOptionPane.showMessageDialog(this, "Please enter password of at least eight characters.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+
+                    return;
+                }
+                
+                userDTO.setPassword(password);
+            }
+
             userDTO.setEmailAddress(email);
             userDTO.setFirstName(firstName);
             userDTO.setLastName(lastName);
@@ -2019,6 +2059,22 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
     private void userEnableJCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEnableJCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userEnableJCheckBox1ActionPerformed
+
+    private void cancelJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelJButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+
+        this.getRootPane().getParent().setVisible(false);
+        
+        this.getRootPane().getParent().dispatchEvent(new WindowEvent(
+                (Window) this.getRootPane().getParent(), WindowEvent.WINDOW_CLOSING));
+        
+    }//GEN-LAST:event_cancelJButtonActionPerformed
+
+    private void changePasswordJCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordJCheckBoxActionPerformed
+        // TODO add your handling code here:
+        currentUser.setChangePassword(changePasswordJCheckBox.isSelected());
+    }//GEN-LAST:event_changePasswordJCheckBoxActionPerformed
 
     private void showAnnotationManagementTabs()
     {
@@ -2876,6 +2932,8 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         
         loggedIn = loginSpringWeb();
 
+        workJPanel.setConnected(loggedIn);
+
         if(!loggedIn)
         {
             JOptionPane.showMessageDialog(this, "Unable to connect to the_server.\nPlease check connection." + getServer(), GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
@@ -3085,12 +3143,12 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
             RemoteFileNode annotationDirNode = RMIUtils.getAnnotationDirNodeRMI(rootRemoteFileNode);
 
             if(annotationDirNode == null) {
-                sanchaySpringRestClient.cloneDirectory(annotationDirNode, false);
+                JOptionPane.showMessageDialog(this, "There are no files added for annotation/validation\n."
+                        + "Please ask the annotation manager to upload file.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "There are no files added for annotation/validation\n."
-                        + "Please ask the annotation manager to upload file.", GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+                sanchaySpringRestClient.cloneDirectory(annotationDirNode, false);
             }
         }
         catch(Exception e)
@@ -3319,6 +3377,7 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
     private javax.swing.JCheckBox annotationManagementJCheckBox;
     private javax.swing.JPanel bottomJPanel;
     private javax.swing.JButton cancelJButton;
+    private javax.swing.JCheckBox changePasswordJCheckBox;
     private javax.swing.JButton connectJButton;
     private javax.swing.JPanel connectJPanel;
     private javax.swing.JComboBox<String> connectionModeJComboBox;
