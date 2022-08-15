@@ -2137,7 +2137,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
         sanchayRemoteWorkJPanel.setWorkJPanel(this);
 
         sanchayRemoteWorkJPanel.setOwner(owner);
-        SanchayJDialog openDialog = new SanchayJDialog(owner, sanchay.GlobalProperties.getIntlString("Sanchay_SSH_Client"), true, (JPanelDialog) sanchayRemoteWorkJPanel);
+        SanchayJDialog openDialog = new SanchayJDialog(owner, "Sanchay_SSH_Client", true, (JPanelDialog) sanchayRemoteWorkJPanel);
 //            openDialog.pack();
         SanchayGUIUtils.maximizeDialog(openDialog);
 

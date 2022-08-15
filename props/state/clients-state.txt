@@ -58,6 +58,9 @@ KVPropertiesEnd
 KVPropertiesBegin::Sanchay Shell
 Column Names::Property	Value
 KVPropertiesEnd
+KVPropertiesBegin::Sanchay_SSH_Client
+Column Names::Property	Value
+KVPropertiesEnd
 KVPropertiesBegin::Sentence Alignment Interface
 Column Names::Property	Value
 srcLangEnc	eng::utf8

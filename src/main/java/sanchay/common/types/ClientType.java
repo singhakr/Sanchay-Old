@@ -394,7 +394,7 @@ public final class ClientType extends SanchayType implements Serializable {
         
     }
 
-    public static final ClientType SANCHAY_SSH_CLIENT = new ClientType(GlobalProperties.getIntlString("Sanchay_SSH_Client"), "SC", "SanchaySSHClientJPanel", ServerType.RESOURCE_MANAGER, "sanchay.gui.clients");
+    public static final ClientType SANCHAY_SSH_CLIENT = new ClientType("Sanchay_SSH_Client", "SC", "SanchaySSHClientJPanel", ServerType.RESOURCE_MANAGER, "sanchay.gui.clients");
     public static final ClientType SANCHAY_EDITOR = new ClientType(GlobalProperties.getIntlString("Sanchay_Editor"), "SE", "TextEditorJPanel", ServerType.RESOURCE_MANAGER, "sanchay.text.editor.gui");
     public static final ClientType SANCHAY_RTF_EDITOR = new ClientType(GlobalProperties.getIntlString("Sanchay_Rich_Text_Editor"), "RE", "RichTextEditorJPanel", ServerType.RESOURCE_MANAGER, "sanchay.text.editor.gui");
     public static final ClientType SANCHAY_SHELL = new ClientType("Sanchay Shell", "SS", "SanchayShellJPanel", ServerType.RESOURCE_MANAGER, "sanchay.gui.shell");

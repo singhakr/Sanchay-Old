@@ -171,6 +171,9 @@ public class GlobalProperties implements Serializable {
         if(sanchayResourceBundle == null)
             sanchayResourceBundle = ResourceBundle.getBundle("sanchay");
 
+        if(!sanchayResourceBundle.containsKey(key))
+            return key;
+
         return sanchayResourceBundle.getString(key);
     }
 

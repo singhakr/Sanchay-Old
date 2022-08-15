@@ -1263,7 +1263,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
                 }
 
                 SSFNode node = (SSFNode) (currentSelection[i].getLastPathComponent());
-                indices[i] = new Integer(parent.findChild(node));
+                indices[i] = Integer.valueOf(parent.findChild(node));
             }
 
             Arrays.sort(indices);
@@ -2136,7 +2136,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
                 }
 
                 SSFNode node = (SSFNode) (currentSelection[i].getLastPathComponent());
-                indices[i] = new Integer(parent.findChild(node));
+                indices[i] = Integer.valueOf(parent.findChild(node));
             }
 
             Arrays.sort(indices);

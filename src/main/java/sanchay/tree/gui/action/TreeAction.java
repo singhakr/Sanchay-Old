@@ -134,7 +134,7 @@ public class TreeAction extends AbstractAction {
 		
 		act.setEnabled(false);
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Undo_an_action."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_U));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_U));
 		undoAction = (UndoAction) act;
         act.setCommand(UNDO);
 		return act;
@@ -144,7 +144,7 @@ public class TreeAction extends AbstractAction {
 		
 		act.setEnabled(false);
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Redo_an_action."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_R));
 		redoAction = (RedoAction) act;
         act.setCommand(REDO);
 		return act;
@@ -163,7 +163,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Toggle_edit_mode."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_0));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_0));
         act.setCommand(EDIT_TREE);
 		return act;
 		
@@ -175,7 +175,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Edit_a_node's_label."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_B));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_B));
         act.setCommand(EDIT_LABEL);
 		return act;
 		
@@ -187,7 +187,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Edit_a_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_E));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_E));
         act.setCommand(EDIT_NODE);
 		return act;
 		
@@ -199,7 +199,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Edit_node_text."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_N));
         act.setCommand(EDIT_NODE_TEXT);
 		return act;
 
@@ -223,7 +223,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Save_the_tree."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_S));
         act.setCommand(SAVE_TREE);
 		return act;
 		
@@ -235,7 +235,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Save_the_tree_as..."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_V));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_V));
         act.setCommand(SAVE_TREE_AS);
 		return act;
 		
@@ -280,7 +280,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Add_a_child_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_H));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_H));
         act.setCommand(ADD_CHILD);
 		return act;
 		
@@ -292,7 +292,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Insert_a_node_before_the_selected_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_I));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_I));
         act.setCommand(INSERT_NODE);
 		return act;
 
@@ -304,7 +304,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Join_the_selected_nodes_into_one_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_J));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_J));
         act.setCommand(JOIN_NODES);
 		return act;
 
@@ -316,7 +316,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Split_the_selected_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_N));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_N));
         act.setCommand(SPLIT_NODE);
 		return act;
 
@@ -328,7 +328,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Join_the_selected_nodes_under_a_new_parent."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_A));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_A));
         act.setCommand(ADD_LAYER);
 		return act;
 
@@ -340,7 +340,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Delete_a_node_and_move_up_it's_children."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_Y));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_Y));
         act.setCommand(DEL_LAYER);
 		return act;
 
@@ -352,7 +352,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Delete_a_subtree."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_D));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_D));
         act.setCommand(DEL_SUBTREE);
 		return act;
 
@@ -412,7 +412,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Copy_a_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_C));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_C));
         act.setCommand(COPY_NODE);
 		return act;
 
@@ -424,7 +424,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Cut_a_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_T));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_T));
         act.setCommand(CUT_NODE);
 		return act;
 
@@ -436,7 +436,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Paste_a_node."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_P));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_P));
         act.setCommand(PASTE_NODE);
 		return act;
 
@@ -448,7 +448,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Expand_the_tree."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_X));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_X));
         act.setCommand(EXPAND_ALL);
 		return act;
 
@@ -460,7 +460,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Collapse_the_tree."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_L));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_L));
         act.setCommand(COLLAPSE_ALL);
 		return act;
 
@@ -472,7 +472,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Print_the_tree."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_R));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_R));
         act.setCommand(TREE_PRINT);
 		return act;
 
@@ -484,7 +484,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("See_a_tree-like_view."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_W));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_W));
         act.setCommand(VIEW_TREE);
 		return act;
 
@@ -496,7 +496,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, "View the group (chunk) dependencies");
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_G));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_G));
         act.setCommand(VIEW_GDEPS);
 		return act;
 
@@ -508,7 +508,7 @@ public class TreeAction extends AbstractAction {
 		};
 
 		act.putValue(SHORT_DESCRIPTION, "View the leaf (lexical) depedencies");
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_F));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_F));
         act.setCommand(VIEW_LDEPS);
 		return act;
 
@@ -520,7 +520,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("View_the_phrase_structure."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_M));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_M));
         act.setCommand(VIEW_PS);
 		return act;
 
@@ -532,7 +532,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Select_the_input_method."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_O));
         act.setCommand(SELECT_INPUT_METHOD);
 		return act;
 
@@ -544,7 +544,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, GlobalProperties.getIntlString("Show_or_hide_the_keyboard_map."));
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_Y));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_Y));
         act.setCommand(SHOW_KB_MAP);
 		return act;                
 
@@ -556,7 +556,7 @@ public class TreeAction extends AbstractAction {
 		};
 
 		act.putValue(SHORT_DESCRIPTION, "Set Hierachical tag levels");
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_Y));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_Y));
                 act.setCommand(SET_TAG_LEVELS);
 		return act;
 
@@ -568,7 +568,7 @@ public class TreeAction extends AbstractAction {
 		};
 		
 		act.putValue(SHORT_DESCRIPTION, "Show or hide the editing control tabs.");
-		act.putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_Y));
+		act.putValue(MNEMONIC_KEY, Integer.valueOf(KeyEvent.VK_Y));
                 act.setCommand(SHOW_CONTROL_TABS);
 		return act;
 	}
