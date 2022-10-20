@@ -2954,7 +2954,7 @@ public class SanchayRemoteWorkJPanel extends javax.swing.JPanel
         userName = userJTextField.getText();
         password= String.valueOf(passwordJTextField.getPassword());
 
-        sanchaySpringRestClient.authenticateUser(userName, password);
+        sanchaySpringRestClient.authenticateUser(server, userName, password);
         currentUser = sanchaySpringRestClient.getCurrentUser();
         
         annotationManagementUpdateInfo = sanchaySpringRestClient.getAnnotationManagementUpdateInfo();

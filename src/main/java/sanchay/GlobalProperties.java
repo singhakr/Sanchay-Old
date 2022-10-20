@@ -13,7 +13,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 import sanchay.properties.KeyValueProperties;
+
+import javax.swing.*;
+import sanchay.util.SanchayStringUtils;
 
 /**
  *
@@ -89,44 +95,117 @@ public class GlobalProperties implements Serializable {
 
     public static String getHomeDirectory()
     {
-        Class myClass = SanchayMain.class;
+        SANCHAY_HOME = System.getenv("SANCHAY_HOME1");
 
-        String className = SanchayMain.class.getName();
+//        String sanchayJarSubpath = null;
+        int lastIndexLongOf = -1;
+        int lastIndexShortOf = -1;
+        String path = null;
+        String sanchayPathName = null;
+        String sanchayPathNameShort = null;
 
-        className = className.replaceAll("sanchay.", "");
+        String sanchayNameRegexLong = "/Sanchay[^/]*/";
+        String sanchayNameRegexShort = "/Sanchay/";
 
-        URL url = myClass.getResource(className + ".class");
+        if(SANCHAY_HOME == null)
+        {        
+            Class myClass = SanchayMain.class;
 
-        String path = url.getPath();
+            String className = SanchayMain.class.getName();
 
-//        System.out.println(path);
+            className = className.replaceAll("sanchay.", "");
 
-        if(path.contains(".jar"))
-        {
-            int ind = path.lastIndexOf("Sanchay.jar");
+            URL url = myClass.getResource(className + ".class");
 
-//            System.out.println(path.substring(0, ind - 5));
-//            System.out.println(path.substring(0, ind));
+            path = url.getPath();
 
-            if(path.contains("dist/Sanchay.jar"))
-                path = path.substring(0, ind - 5);
-            else if(path.contains("lib/Sanchay.jar"))
-                path = path.substring(0, ind - 4);
-            else
-                path = path.substring(0, ind);
+    //        System.out.println(path);
+
+//            if(path.contains(".jar")) {
+                System.out.println("Sanchay path: " + path);
+
+                lastIndexLongOf = SanchayStringUtils.getLastStartIndexOfRegex(path, sanchayNameRegexLong);
+                sanchayPathName = SanchayStringUtils.getLastOccurrenceOfRegex(path, sanchayNameRegexLong);
+
+                lastIndexShortOf = SanchayStringUtils.getLastStartIndexOfRegex(path, sanchayNameRegexShort);
+                sanchayPathNameShort = SanchayStringUtils.getLastOccurrenceOfRegex(path, sanchayNameRegexShort);
+
+                if(sanchayPathNameShort.length() < sanchayPathName.length())
+                {
+                    sanchayPathName = sanchayNameRegexShort;
+                }
+
+//                sanchayJarSubpath = SanchayStringUtils.getLastStartIndexOfRegex(path, "/Sanchay", "");
+//                sanchayJarName = StringUtils.substringBetween(path, "/", ".jar");
+
+                System.out.println("Sanchay path: " + path);
+
+//                if (sanchayJarSubpath == null || sanchayJarSubpath.equals(path)) {
+//                    sanchayJarSubpath = SanchayStringUtils.getLastOccurrenceOfRegex(path, "/Sanchay", ".jar");
+//                    sanchayJarSubpath = StringUtils.substringBetween(path, "\\", ".jar");
+//                }
+//            }
+//            else if(path.contains(".class")) {
+//                System.out.println("Sanchay path: " + path);
+//
+//                sanchayJarSubpath = SanchayStringUtils.getLastOccurrenceOfRegex(path, "/Sanchay", ".class");
+////                sanchayJarName = StringUtils.substringBetween(path, "/", ".class");
+//
+//                System.out.println("Sanchay path: " + path);
+//
+//                if (sanchayJarSubpath == null || sanchayJarSubpath.equals(path)) {
+//                    sanchayJarSubpath = SanchayStringUtils.getLastOccurrenceOfRegex(path, "/Sanchay", ".class");
+////                    sanchayJarName = StringUtils.substringBetween(path, "\\", ".class");
+//                }
+//            }
+
+            System.out.println("Sanchay path: "+ path);
+
+//            if(sanchayJarSubpath != null)
+//            {
+//                System.out.println("Sanchay jar name: "+ sanchayJarSubpath);
+////                int ind = path.lastIndexOf("Sanchay.jar");
+//                int ind = path.lastIndexOf(sanchayJarSubpath);
+//
+//    //            System.out.println(path.substring(0, ind - 5));
+//    //            System.out.println(path.substring(0, ind));
+//
+//                if(path.contains("dist/" + sanchayJarSubpath))
+//                    path = path.substring(0, ind - 5);
+//                else if(path.contains("lib/" + sanchayJarSubpath))
+//                    path = path.substring(0, ind - 4);
+//                else
+//                    path = path.substring(0, ind);
+//
+//                System.out.println("Sanchay path: "+ path);
+//            }
         }
-        else
-        {
-            int ind = path.lastIndexOf("Sanchay/");
+//            else
+//            {
+//                int ind = path.lastIndexOf("Sanchay/");
+//
+//                 path = path.substring(0, ind + 7);
+//
+//    //             System.out.println(path);
+//            }
 
-             path = path.substring(0, ind + 7);
+        int ind = path.lastIndexOf(sanchayPathName);
 
-//             System.out.println(path);
-        }
-
+        SANCHAY_HOME = path.substring(0, ind + 8);
 //        path = path.substring(0, path.length() - className.length() + 1);
-        
-        SANCHAY_HOME = path.replaceAll("file:", "");
+
+        if(SANCHAY_HOME.startsWith("/"))
+        {
+            SANCHAY_HOME = SANCHAY_HOME.substring(1);
+        }
+
+        if(SANCHAY_HOME == null) {
+            JOptionPane.showMessageDialog(null, "SANCHAY_HOME not define.\nPlease set the environment variable SANCHAY_HOME to the\npath of the Sanchay folder.", sanchay.GlobalProperties.getIntlString("Error"), JOptionPane.ERROR_MESSAGE);
+
+            System.exit(1);
+        }
+
+        SANCHAY_HOME = SANCHAY_HOME.replaceAll("file:", "");
 
 //        System.out.println(SANCHAY_HOME);
 

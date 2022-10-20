@@ -133,7 +133,13 @@ public class SanchaySpringRestClient {
         return refresh_token;
     }
 
-    public String authenticateUser(String username, String password) {
+    public String authenticateUser(String server, String username, String password) {
+        if(server != null || !server.equals(""))
+        {
+            AUTH_BASE_URL = server + SanchaySpringServerEndPoints.AUTH_BASE;
+            FILE_BASE_URL = server + SanchaySpringServerEndPoints.FILE_SERVER_BASE;            
+        }
+        
         String authenticationURL = AUTH_BASE_URL + SanchaySpringServerEndPoints.LOGIN;
         String requestBody = "username=" + username + "&" + "password=" + password;
 
@@ -1395,7 +1401,9 @@ public class SanchaySpringRestClient {
 
 //        SanchaySpringRestClient sanchaySpringRestClient = new SanchaySpringRestClient();
 
-        sanchaySpringRestClient.authenticateUser("socrates", "1234");
+        String server = "http://localhost:8080/sanchay-server";
+
+        sanchaySpringRestClient.authenticateUser(server, "socrates", "1234");
         sanchaySpringRestClient.getCurrentUser();
 
 //        sanchaySpringRestClient.getUserRoles("Socrates");

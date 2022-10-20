@@ -1,1 +1,1 @@
-java -Xmx800m  -Djava.ext.dirs=lib -cp .;dist/Sanchay.jar -Djava.security.policy=policy sanchay.SanchayMain
+java -Xmx800m -cp .;ext-lib/*;dist/Sanchay-1.0-SNAPSHOT.jar sanchay.SanchayMain
