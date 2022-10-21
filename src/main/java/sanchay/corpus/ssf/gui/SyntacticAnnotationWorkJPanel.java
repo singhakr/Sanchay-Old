@@ -152,6 +152,7 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
     private boolean alignmentMode;
     
     private boolean workRemote = false;
+    private boolean workRemoteDefault = false;
     
     protected PropbankInfoJPanel extraInfoJPanel;
 
@@ -193,6 +194,13 @@ public class SyntacticAnnotationWorkJPanel extends javax.swing.JPanel
 
         initComponents();
         
+        String workRemoteDefault = GlobalProperties.getClientModes().getPropertyValue("SYNTACTIC_ANNOTATION_REMOTE_DEFAULT");
+
+        if(workRemoteDefault.equals("YES"))
+            workRemoteJCheckBox.setSelected(true);
+        else
+            workRemoteJCheckBox.setSelected(false);
+
         uploadJButton.setVisible(false);
 
         loadState(this);
