@@ -32,3 +32,5 @@ Telugu	tel
 
 Urdu	urd
 
+Sindhi	snd
+

@@ -69,7 +69,7 @@ currentDir	.
 KVPropertiesEnd
 KVPropertiesBegin::Syntactic Annotation
 Column Names::Property	Value
-LangEnc	hin::utf8
+LangEnc	snd::utf8
 CurrentDir	D:\projects\Sanchay-POM-Project\Sanchay\tmp
 CurrentFontSize	14
 CurrentTreeEditTab	Tags

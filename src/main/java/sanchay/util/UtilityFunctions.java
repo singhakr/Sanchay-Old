@@ -599,6 +599,11 @@ public class UtilityFunctions {
 
             newFont = newFont.deriveFont(newFont.getSize());
 
+            if(c instanceof JTextComponent)
+            {
+                SanchayLanguages.setTextDirection(c, lang);
+            }
+
 	    if(c instanceof JTextPane)
             {
     		JTextComponent jtc = (JTextComponent) c;
