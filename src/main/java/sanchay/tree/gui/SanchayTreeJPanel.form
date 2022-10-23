@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.2" maxVersion="1.2" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
@@ -84,8 +84,8 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="senJTextArea">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Dialog" size="12" style="1"/>
                         </Property>
@@ -318,21 +318,26 @@
                         </Container>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="commandsJPanel">
+                    <Container class="javax.swing.JScrollPane" name="commandsJScrollPane">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Commands" toolTip="General commands for editing">
+                          <JTabbedPaneConstraints tabName="Commands">
                             <Property name="tabTitle" type="java.lang.String" value="Commands"/>
-                            <Property name="tabToolTip" type="java.lang.String" value="General commands for editing"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
 
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                        <Property name="columns" type="int" value="1"/>
-                        <Property name="rows" type="int" value="0"/>
-                        <Property name="verticalGap" type="int" value="2"/>
-                      </Layout>
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="commandsJPanel">
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                            <Property name="columns" type="int" value="1"/>
+                            <Property name="rows" type="int" value="0"/>
+                            <Property name="verticalGap" type="int" value="2"/>
+                          </Layout>
+                        </Container>
+                      </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>

@@ -81,7 +81,3 @@ urd::nafees-naskh	fonts/urd/nafees-naskh:fonts/kas/nafees-naskh
 asm::utf8	fonts/asm:fonts/ben
 asm::utf16	fonts/asm:fonts/ben
 
-#Sindhi
-snd::utf8	fonts/urd:fonts/kas
-snd::utf16	fonts/urd:fonts/kas
-snd::nafees-naskh	fonts/urd/nafees-naskh:fonts/kas/nafees-naskh

@@ -68,7 +68,13 @@ public class TextEditorJPanel extends javax.swing.JPanel implements WindowListen
     protected LangEncIdentifier encLangIdentifier;
     
     protected AbstractDocument doc;
-    
+
+    public void setLangEnc(String langEnc) {
+        this.langEnc = langEnc;
+
+        UtilityFunctions.setComponentFont(textJTextArea, langEnc);
+    }
+
     protected String langEnc;
     
     protected String textFile;
@@ -175,6 +181,8 @@ public class TextEditorJPanel extends javax.swing.JPanel implements WindowListen
     }
     
     public TextEditorJPanel(String path, String lang, String cs) {
+
+        langEnc = lang;
         
         initComponents();
 

@@ -87,12 +87,6 @@ urd::utf8	Code2000
 urd::utf16	Code2000
 urd::nafees-naskh	Nafees Naskh
 
-#Sindhi
-snd::utf8	Code2000
-#snd::utf8	Urdu Naksh Unicode
-snd::utf16	Code2000
-snd::nafees-naskh	Nafees Naskh
-
 #Assamese
 asm::utf8	Likhan
 asm::utf16	Likhan

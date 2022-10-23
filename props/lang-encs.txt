@@ -61,6 +61,3 @@ PropertyTokensBegin::urd
 utf8
 PropertyTokensEnd
 
-PropertyTokensBegin::snd
-utf8
-PropertyTokensEnd

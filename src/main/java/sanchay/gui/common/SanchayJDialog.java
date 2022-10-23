@@ -29,6 +29,11 @@ public class SanchayJDialog extends JDialog
 	super();
     }
 
+    public SanchayJDialog(Dialog owner, String title, boolean modal)
+    {
+	super(owner, title, modal);
+    }
+
     public SanchayJDialog(Dialog owner, String title, boolean modal, JPanelDialog pnl)
     {
 	super(owner, title, modal);

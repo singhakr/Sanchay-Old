@@ -51,7 +51,6 @@ public class SanchayLanguages {
     // Default fonts for each language-encoding pair
     protected static KeyValueProperties langEncFonts;
     protected static KeyValueProperties defLangEncFonts;
-    protected static KeyValueProperties textDirections;
 
     // All fonts for each language-encoding pair
     // One LinkedHashMap for each inside the outer LinkedHashMap
@@ -176,7 +175,6 @@ public class SanchayLanguages {
 
             langEncFonts = new KeyValueProperties(GlobalProperties.resolveRelativePath("props/lang-enc-font-props.txt"), GlobalProperties.getIntlString("UTF-8"));
             defLangEncFonts = new KeyValueProperties(GlobalProperties.resolveRelativePath("props/lang-enc-default-fonts.txt"), GlobalProperties.getIntlString("UTF-8"));
-            textDirections = new KeyValueProperties(GlobalProperties.resolveRelativePath("props/languages-text-directions.txt"), GlobalProperties.getIntlString("UTF-8"));
 
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
@@ -483,14 +481,6 @@ public class SanchayLanguages {
 
         return (Font) getLangEncFonts(langenc).get(family);
     }
-    
-    public static String getTextDirection(String langEnc)
-    {
-        if(textDirections.getPropertyValue(langEnc).equals("RTL"))
-            return "RTL";
-        
-        return "LTR";
-    }
 
     public static Font getFont(String family) {
         if (allFonts == null)
@@ -700,14 +690,6 @@ public class SanchayLanguages {
 
         return (selectedLocaleName != null && selectedLocaleName.equals("") == false) ? selectedLocaleName : "System input method";
     }
-    
-    public static void setTextDirection(Component cmp, String langEnc)
-    {
-        if(getTextDirection(langEnc).equals("RTL"))
-        {
-            cmp.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-    }
 
     public static void selectInputMethodForComponent(Component cmp) {
         Object installedLocaleNames[] = installedLocales.keySet().toArray();
@@ -728,6 +710,16 @@ public class SanchayLanguages {
 
     public static void changeInputMethod(Component cmp, String localeName) {
         boolean changed = cmp.getInputContext().selectInputMethod((Locale) installedLocales.get(localeName));
+
+        Object imObject = cmp.getInputContext().getInputMethodControlObject();
+
+        if (imObject != null && imObject instanceof GateIM) {
+            ((GateIM) imObject).setMapVisible(false);
+        }
+    }
+
+    public static void changeInputMethod(Component cmp, Locale locale) {
+        boolean changed = cmp.getInputContext().selectInputMethod(locale);
 
         Object imObject = cmp.getInputContext().getInputMethodControlObject();
 
@@ -945,23 +937,17 @@ public class SanchayLanguages {
         return false;
     }
 
-    /*** 
-     * Deprecated.
-     * @param c
-     * @param langEnc
-     * @return 
-     */
-//    public static boolean setTextDirection(Component c, String langEnc) {
-//        String langCode = getLanguageCodeFromLECode(langEnc);
-//
-//        if (langCode.equals("urd") || langCode.equals("kas")) {
-////            c.set
-//
-//            return true;
-//        }
-//
-//        return false;
-//    }
+    public static boolean setTextDirection(Component c, String langEnc) {
+        String langCode = getLanguageCodeFromLECode(langEnc);
+
+        if (langCode.equals("urd") || langCode.equals("kas")) {
+//            c.set
+
+            return true;
+        }
+
+        return false;
+    }
 
     public static Locale getLocale(String langEnc) {
         String langCode = getLanguageCodeFromLECode(langEnc);

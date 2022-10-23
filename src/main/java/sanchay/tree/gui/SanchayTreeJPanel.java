@@ -239,6 +239,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
         removeFSJButton = new javax.swing.JButton();
         addFSJButton = new javax.swing.JButton();
         applyFSJButton = new javax.swing.JButton();
+        commandsJScrollPane = new javax.swing.JScrollPane();
         commandsJPanel = new javax.swing.JPanel();
         bottomJPanel = new javax.swing.JPanel();
         textLabelEditJPanel = new javax.swing.JPanel();
@@ -266,9 +267,9 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
         senJLabel.setText(bundle.getString("Sentence:_")); // NOI18N
         senJPanel.add(senJLabel, java.awt.BorderLayout.NORTH);
 
-        senJTextArea.setColumns(20);
         senJTextArea.setEditable(false);
-        senJTextArea.setFont(new java.awt.Font("Dialog", 1, 12));
+        senJTextArea.setColumns(20);
+        senJTextArea.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         senJTextArea.setLineWrap(true);
         senJTextArea.setRows(2);
         senJTextArea.setWrapStyleWord(true);
@@ -297,7 +298,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
 
         treeJScrollJPane.setPreferredSize(new java.awt.Dimension(454, 404));
 
-        treeJTree.setFont(new java.awt.Font("Dialog", 1, 14));
+        treeJTree.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         treeJTree.setMaximumSize(new java.awt.Dimension(32767, 32767));
         treeJTree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
             public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
@@ -380,7 +381,9 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
         controlsJTabbedPane.addTab("Attributes", featuresTabJPanel);
 
         commandsJPanel.setLayout(new java.awt.GridLayout(0, 1, 0, 2));
-        controlsJTabbedPane.addTab("Commands", null, commandsJPanel, "General commands for editing");
+        commandsJScrollPane.setViewportView(commandsJPanel);
+
+        controlsJTabbedPane.addTab("Commands", commandsJScrollPane);
 
         treeJSplitPane.setRightComponent(controlsJTabbedPane);
 
@@ -660,6 +663,20 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
         ((MultiLingualTreeCellRenderer)  treeJTree.getCellRenderer()).increaseFontSize();
         UtilityFunctions.increaseFontSize(senJTextArea);
         UtilityFunctions.increaseFontSize(nodeTextJTextArea);
+        
+        JComponent comp = (JComponent) fsEditJPanel.getComponent(1);
+
+        if(comp != null)
+        {
+            UtilityFunctions.increaseFontSize(comp);
+        }
+        
+        comp = (JComponent) fsEditJPanel.getComponent(7);
+
+        if(comp != null)
+        {
+            UtilityFunctions.increaseFontSize(comp);
+        }
     }
 
     public void decreaseFontSizes()
@@ -667,6 +684,20 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
         ((MultiLingualTreeCellRenderer)  treeJTree.getCellRenderer()).decreaseFontSize();
         UtilityFunctions.decreaseFontSize(senJTextArea);
         UtilityFunctions.decreaseFontSize(nodeTextJTextArea);
+        
+        JComponent comp = (JComponent) fsEditJPanel.getComponent(1);
+
+        if(comp != null)
+        {
+            UtilityFunctions.decreaseFontSize(comp);
+        }
+        
+        comp = (JComponent) fsEditJPanel.getComponent(7);
+
+        if(comp != null)
+        {
+            UtilityFunctions.decreaseFontSize(comp);
+        }
     }
 
     private void removeTreeNodeJPanel()
@@ -1712,7 +1743,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
 
                         fsEditJPanel.removeAll();
 
-                        UtilityFunctions.fillMandatoryFSEditJPanel(this, cnfss.getAltFSValue(0), fsEditJPanel);
+                        UtilityFunctions.fillMandatoryFSEditJPanel(this, cnfss.getAltFSValue(0), fsEditJPanel, langEnc);
 
                         selectFSS2Edit();
                     }
@@ -1759,7 +1790,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
 
                         fsEditJPanel.removeAll();
 
-                        UtilityFunctions.fillMandatoryFSEditJPanel(this, cnfss.getAltFSValue(0), fsEditJPanel);
+                        UtilityFunctions.fillMandatoryFSEditJPanel(this, cnfss.getAltFSValue(0), fsEditJPanel, langEnc);
 
                         selectFSS2Edit();
                     }
@@ -1916,7 +1947,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
 
                 fsEditJPanel.removeAll();
 
-                UtilityFunctions.fillMandatoryFSEditJPanel(this, ifs, fsEditJPanel);
+                UtilityFunctions.fillMandatoryFSEditJPanel(this, ifs, fsEditJPanel, langEnc);
 
                 selectFSS2Edit();
 
@@ -3158,6 +3189,7 @@ public class SanchayTreeJPanel extends javax.swing.JPanel implements SanchayClie
     public javax.swing.JButton applyFSJButton;
     public javax.swing.JPanel bottomJPanel;
     public javax.swing.JPanel commandsJPanel;
+    public javax.swing.JScrollPane commandsJScrollPane;
     public javax.swing.JTabbedPane controlsJTabbedPane;
     public javax.swing.JPanel featuresTabJPanel;
     public javax.swing.JPanel fsEditCommandsJPanel;
