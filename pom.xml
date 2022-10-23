@@ -377,7 +377,14 @@
             <artifactId>reflections</artifactId>
             <version>0.10.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.ekryd.reflection-utils/reflection-utils -->
         <dependency>
+            <groupId>com.github.ekryd.reflection-utils</groupId>
+            <artifactId>reflection-utils</artifactId>
+            <version>1.1.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!--dependency>
             <groupId>com.google.code.reflection-utils</groupId>
             <artifactId>reflection-utils</artifactId>
             <version>0.0.4</version>

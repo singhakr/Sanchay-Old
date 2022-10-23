@@ -1,0 +1,102 @@
+<Sentence id='1'>
+1	طہماسپ	unk
+2	ان	unk
+3	مسلمان	unk
+4	حکمرانوں	unk
+5	میں	unk
+6	سے	unk
+7	ہے	unk
+8	جنہوں	unk
+9	نے	unk
+10	50	unk
+11	سال	unk
+12	سے	unk
+13	زیادہ	unk
+14	حکومت	unk
+15	کی۔	unk
+</Sentence>
+
+<Sentence id='2'>
+1	میں	unk
+2	آج	unk
+3	گھر	unk
+4	سے	unk
+5	کام	unk
+6	(	unk
+7	WFH	unk
+8	)	unk
+9	کر	unk
+10	رہا	unk
+11	ہوں۔	unk
+</Sentence>
+
+<Sentence id='3'>
+1	ان	unk
+2	کی	unk
+3	نظموں	unk
+4	میں	unk
+5	اڈیشہ	unk
+6	کی	unk
+7	روایات،	unk
+8	اقدار	unk
+9	اور	unk
+10	اس	unk
+11	وقت	unk
+12	کی	unk
+13	سماجی	unk
+14	زندگی	unk
+15	کی	unk
+16	عکاسی	unk
+17	کی	unk
+18	بنیاد	unk
+19	کو	unk
+20	کلیدی	unk
+21	بنا	unk
+22	کر	unk
+23	گوپا	unk
+24	بندھو	unk
+25	داس	unk
+26	کی	unk
+27	نظم	unk
+28	دھرم	unk
+29	پاڑہ	unk
+30	(	unk
+31	Dharampada	unk
+32	)	unk
+33	نے	unk
+34	نئی	unk
+35	بلندیوں	unk
+36	کو	unk
+37	چھوا	unk
+38	ہے	unk
+39	۔	unk
+</Sentence>
+
+<Sentence id='4'>
+1	ساچی	unk
+2	روترے	unk
+3	(	unk
+4	Sachi	unk
+5	Routray	unk
+6	)	unk
+7	کی	unk
+8	نظم	unk
+9	پر	unk
+10	متعدد	unk
+11	تجربات	unk
+12	کئے	unk
+13	گئے	unk
+14	جس	unk
+15	سے	unk
+16	اس	unk
+17	کی	unk
+18	ساخت	unk
+19	اور	unk
+20	مواد	unk
+21	میں	unk
+22	زبردست	unk
+23	تبدیلی	unk
+24	آئی	unk
+25	۔	unk
+</Sentence>
+
