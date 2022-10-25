@@ -20,8 +20,6 @@ import java.util.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-import jmathlib.toolbox.jmathlib.system.java;
-
 import sanchay.GlobalProperties;
 import sanchay.properties.KeyValueProperties;
 import sanchay.properties.MultiPropertyTokens;
@@ -66,7 +64,7 @@ public class SanchayLanguages {
     public static float minDisplayableFraction = (float) 0.3;
     public static float maxDisplayableFraction = (float) 0.7;
 
-    protected static LinkedHashMap installedLocales;
+    protected static LinkedHashMap installedLocalesByNameKey;
     protected static String selectedLocaleName;
     protected static boolean kbMapShown;
 
@@ -98,12 +96,12 @@ public class SanchayLanguages {
             ex.printStackTrace();
         }
 
-        installedLocales = new LinkedHashMap();
+        installedLocalesByNameKey = new LinkedHashMap();
         selectedLocaleName = "System input method";
         previousLocaleName = selectedLocaleName;
         Locale selectedLocale = Locale.getDefault();
 
-        installedLocales.put(selectedLocaleName, selectedLocale);
+        installedLocalesByNameKey.put(selectedLocaleName, selectedLocale);
 
         Iterator enm = allInputMethods.getPropertyKeys();
 
@@ -145,7 +143,7 @@ public class SanchayLanguages {
             Locale locales[] = imd.getAvailableLocales();
 
             for (int i = 0; i < locales.length; i++) {
-                installedLocales.put(locales[i].getDisplayName() + " (" + provider + ")", locales[i]);
+                installedLocalesByNameKey.put(locales[i].getDisplayName() + " (" + provider + ")", locales[i]);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,7 +151,7 @@ public class SanchayLanguages {
     }
 
     public static LinkedHashMap getAllInputMethods() {
-        return installedLocales;
+        return installedLocalesByNameKey;
     }
 
     public static void loadFonts() {
@@ -689,7 +687,7 @@ public class SanchayLanguages {
     }
 
     public static String selectInputMethod(Component cmp) {
-        Object installedLocaleNames[] = installedLocales.keySet().toArray();
+        Object installedLocaleNames[] = installedLocalesByNameKey.keySet().toArray();
         Arrays.sort(installedLocaleNames);
 
         previousLocaleName = selectedLocaleName;
@@ -710,7 +708,7 @@ public class SanchayLanguages {
     }
 
     public static void selectInputMethodForComponent(Component cmp) {
-        Object installedLocaleNames[] = installedLocales.keySet().toArray();
+        Object installedLocaleNames[] = installedLocalesByNameKey.keySet().toArray();
         Arrays.sort(installedLocaleNames);
 
         previousLocaleName = selectedLocaleName;
@@ -727,7 +725,7 @@ public class SanchayLanguages {
     }
 
     public static void changeInputMethod(Component cmp, String localeName) {
-        boolean changed = cmp.getInputContext().selectInputMethod((Locale) installedLocales.get(localeName));
+        boolean changed = cmp.getInputContext().selectInputMethod((Locale) installedLocalesByNameKey.get(localeName));
 
         Object imObject = cmp.getInputContext().getInputMethodControlObject();
 

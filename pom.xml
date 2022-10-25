@@ -389,7 +389,7 @@
             <artifactId>reflection-utils</artifactId>
             <version>0.0.4</version>
             <type>pom</type>
-        </dependency>
+        </dependency-->
         <!-- https://mvnrepository.com/artifact/msv/msv -->
         <dependency>
             <groupId>msv</groupId>

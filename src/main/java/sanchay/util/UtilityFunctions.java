@@ -20,6 +20,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import javax.swing.table.*;
 import javax.swing.text.*;
 
@@ -599,8 +601,7 @@ public class UtilityFunctions {
             if (c instanceof JTextComponent) {
                 SanchayLanguages.setTextDirection(c, lang);
             }
-
-            if (c instanceof JTextPane) {
+            else if (c instanceof JTextPane) {
                 JTextComponent jtc = (JTextComponent) c;
 
                 StyledDocument doc = (StyledDocument) jtc.getDocument();
@@ -637,9 +638,26 @@ public class UtilityFunctions {
 //	Locale.setDefault(l);
 //	c.setFont(new Font("Lohit Bengali", Font.BOLD, 14));
     }
+    
+    public static void setComponentInputMethod(JComponent c, Locale locale) {
+        
+        c.addAncestorListener(new AncestorListener() {
+            @Override
+            public void ancestorRemoved(AncestorEvent event) {}
 
-    public static void setComponentFont(Component c, String lang, int size) {
-        setComponentFont(c, lang);
+            @Override
+            public void ancestorMoved(AncestorEvent event) {}
+
+            @Override
+            public void ancestorAdded(AncestorEvent event) {
+                // component is shown here
+                SanchayLanguages.changeInputMethod(c, locale);            
+            }
+        });        
+    }
+    
+    public static void setComponentFont(Component c, String langEnc, int size) {
+        setComponentFont(c, langEnc);
         Font presentFont = c.getFont();
         c.setFont(presentFont.deriveFont(Font.BOLD, size));
     }
@@ -664,8 +682,8 @@ public class UtilityFunctions {
         }
     }
 
-    public static void setJOptionPaneFont(JOptionPane pane, String lang, int size) {
-        setJOptionPaneFont(pane, lang);
+    public static void setJOptionPaneFont(JOptionPane pane, String langEnc, int size) {
+        setJOptionPaneFont(pane, langEnc);
         Font presentFont = pane.getFont();
         pane.putClientProperty(GlobalProperties.getIntlString("OptionPane.font"), presentFont.deriveFont(Font.BOLD, size));
     }

@@ -5,14 +5,11 @@
 
 package sanchay.tree.gui.action;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
-import javax.swing.Action;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.TreePath;
 import sanchay.GlobalProperties;
 import sanchay.corpus.ssf.features.FeatureStructure;
@@ -93,16 +90,28 @@ public class AttributeValueActionListener implements ActionListener {
 
         if(val.equals("Other"))
         {
+            JPanel inputPanel = new JPanel();
+            inputPanel.setLayout(new BorderLayout());
             JTextField inputField = new JTextField("");
-            
-            Locale locale = sanchayTreeJPanel.getLocale();
-            
-            SanchayLanguages.changeInputMethod(inputField, locale);
-//            inputField.getInputContext().
+            JButton inputMethodButton = new JButton();
+            inputMethodButton.setText("Change Input Method");
+
+            inputPanel.add(inputField, BorderLayout.CENTER);
+            inputPanel.add(inputMethodButton, BorderLayout.SOUTH);
+
+//            inputPanel.setMinimumSize(new Dimension(inputMethodButton.getWidth(), inputPanel.getHeight()));
+
+            inputMethodButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String im = SanchayLanguages.selectInputMethod(inputField);
+                    SanchayLanguages.changeInputMethod(inputMethodButton, im);
+                }
+            });
 
             UtilityFunctions.setComponentFont(inputField, langEnc);
-            
-            int result = JOptionPane.showConfirmDialog(sanchayTreeJPanel, inputField, GlobalProperties.getIntlString("Please_enter_the_attribute_value"), JOptionPane.PLAIN_MESSAGE);
+
+            int result = JOptionPane.showConfirmDialog(sanchayTreeJPanel, inputPanel, GlobalProperties.getIntlString("Please_enter_the_attribute_value"), JOptionPane.PLAIN_MESSAGE);
 //            val = JOptionPane.showInputDialog(GlobalProperties.getIntlString("Please_enter_the_attribute_value"), inputField);
 //            val = SanchayJOptionPane.showInternalInputDialog(sanchayTreeJPanel, GlobalProperties.getIntlString("Please_enter_the_attribute_value"), langEnc);
             

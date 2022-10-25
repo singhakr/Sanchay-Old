@@ -692,6 +692,8 @@ public class SanchayTableModel extends DefaultTableModel implements Resource, Sa
                     object = Float.valueOf(0.0F);
                 else if(cls.getCanonicalName().equals(Double.class.getCanonicalName()))
                     object = Double.valueOf(0.0);
+                else if(cls.getCanonicalName().equals(String.class.getCanonicalName()))
+                    object = "";
                 else
 //                    object = cls.getConstructor().newInstance();
                     object = Class.forName(object.getClass().getName()).newInstance();
